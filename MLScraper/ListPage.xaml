@@ -1,0 +1,40 @@
+﻿<Page x:Class="MLScraper.ListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MLScraper"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListPage" Unloaded="Page_Unloaded" Background="#151515">
+
+    <Grid >
+        <DataGrid x:Name="DGArt" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="0" Margin="10,10,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}"  Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Price, StringFormat=\{0:C\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Diferencia" Binding="{Binding Diff, StringFormat=\{0:P\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ESTADO" Binding="{Binding Status}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button x:Name="btnDetalle" CommandParameter="{Binding Code}" Click="btnDetalle_Click">Detalles</Button>
+                                <Button x:Name="btnEliminar" CommandParameter="{Binding Code}" Click="btnEliminar_Click">Eliminar</Button>
+                                <Button x:Name="btnComprar" CommandParameter="{Binding Url}" Click="btnComprar">Comprar</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+           
+        </DataGrid>
+
+    </Grid>
+</Page>

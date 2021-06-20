@@ -1,0 +1,44 @@
+﻿<Page x:Class="MLScraper.PageDetail"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MLScraper"
+      xmlns:controls1="clr-namespace:Wpf.CartesianChart.PointShapeLine"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="#151515"
+      Title="PageDetail" Unloaded="Page_Unloaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image x:Name="imgArt" Grid.Column="0" Grid.Row="0" Margin="10,10"></Image>
+        <TextBlock Foreground="#EEEEEE" FontSize="24" Name="lblName" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="NOMBRE:" TextWrapping="Wrap"></TextBlock>
+
+        <controls1:PointShapeLineExample x:Name="ucChart" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10,10"></controls1:PointShapeLineExample>
+        
+        <DataGrid Name="haDG" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="4" AutoGenerateColumns="False" Margin="10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding Dt}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Price, StringFormat=\{0:C\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ESTADO" Binding="{Binding Status}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="4">
+            <Button IsEnabled="False">Analizar comentarios</Button>
+            <Button Name="btnBack" Click="btnBack_Click">Volver</Button>
+        </StackPanel>
+        
+    </Grid>
+</Page>
